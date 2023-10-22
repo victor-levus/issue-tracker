@@ -7,7 +7,7 @@ const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
 
   return (
-    <div>
+    <div className="mb-5">
       <div className="mb-5 text-white">
         <Button>
           <Link color="white" href={"/issues/new"}>

@@ -14,7 +14,11 @@ const EditIssuePage = async ({ params }: Props) => {
 
   if (!issue) notFound();
 
-  return <IssueForm issue={issue} />;
+  return (
+    <div className="mb-5">
+      <IssueForm issue={issue} />
+    </div>
+  );
 };
 
 export default EditIssuePage;
