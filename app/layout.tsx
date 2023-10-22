@@ -28,7 +28,7 @@ export default function RootLayout({
           scaling="110%"
         >
           <NavBar />
-          <main className="px-4">{children}</main>
+          <main className="px-4 mb-5">{children}</main>
           {/* <ThemePanel /> */}
         </Theme>
       </body>
