@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.variable}>
         <AuthProvider>
           <Theme
-            accentColor="violet"
+            accentColor="ruby"
             grayColor="olive"
             radius="small"
             scaling="110%"
