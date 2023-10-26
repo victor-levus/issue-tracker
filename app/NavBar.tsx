@@ -10,12 +10,12 @@ import { useSession } from "next-auth/react";
 import {
   Avatar,
   Box,
-  Button,
   Container,
   DropdownMenu,
   Flex,
   Text,
 } from "@radix-ui/themes";
+import Skeleton from "@/app/components/Skeleton";
 
 const NavBar = () => {
   return (
@@ -68,7 +68,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { data: session, status } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width={"3rem"} />;
 
   if (status === "unauthenticated")
     return (
