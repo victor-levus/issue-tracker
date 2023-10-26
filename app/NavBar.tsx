@@ -60,14 +60,15 @@ const NavBar = () => {
                   <Box>
                     <BsPersonFill className="text-4xl text-zinc-600 cursor-pointer" />
                   </Box>
+                  {/* <Avatar fallback="?" src={session.user?.image!} radius='full' className='cursor-pointer' referrerPolicy='no-referrer' /> */}
                 </DropdownMenu.Trigger>
 
                 <DropdownMenu.Content>
                   <DropdownMenu.Label>
-                    <Text>{session.user?.name}</Text>
+                    <Text>User: {session.user?.name}</Text>
                   </DropdownMenu.Label>
                   <DropdownMenu.Label>
-                    <Text>{session.user?.email}</Text>
+                    <Text>Email: {session.user?.email}</Text>
                   </DropdownMenu.Label>
                   <DropdownMenu.Item className="my-3">
                     <Link href={"/api/auth/signout"}>LogOut</Link>
