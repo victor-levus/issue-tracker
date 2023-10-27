@@ -9,7 +9,7 @@ import { IoChevronUp } from "react-icons/io5";
 import Pagination from "@/app/components/Pagination";
 
 interface Props {
-  searchParams: { status: Status; orderBy: keyof Issue };
+  searchParams: { status: Status; orderBy: keyof Issue; page: string };
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
@@ -97,7 +97,13 @@ const IssuesPage = async ({ searchParams }: Props) => {
         </Table.Body>
       </Table.Root>
 
-      <Pagination pageSize={6} itemCount={25} currentPage={1} />
+      {searchParams.page && (
+        <Pagination
+          pageSize={6}
+          itemCount={36}
+          currentPage={parseInt(searchParams.page)}
+        />
+      )}
     </div>
   );
 };
