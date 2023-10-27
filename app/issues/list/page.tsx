@@ -6,6 +6,7 @@ import NextLink from "next/link";
 import IssueStatusFilter from "./IssueStatusFilter";
 import { Issue, Status } from "@prisma/client";
 import { IoChevronUp } from "react-icons/io5";
+import Pagination from "@/app/components/Pagination";
 
 interface Props {
   searchParams: { status: Status; orderBy: keyof Issue };
@@ -50,7 +51,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
         </Button>
       </Flex>
 
-      <Table.Root variant="surface">
+      <Table.Root variant="surface" mb={"5"}>
         <Table.Header>
           <Table.Row>
             {columns.map((column) => (
@@ -95,6 +96,8 @@ const IssuesPage = async ({ searchParams }: Props) => {
           ))}
         </Table.Body>
       </Table.Root>
+
+      <Pagination pageSize={6} itemCount={25} currentPage={1} />
     </div>
   );
 };
