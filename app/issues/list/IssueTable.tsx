@@ -12,9 +12,27 @@ export interface IssueQuery {
   page: string;
 }
 
+interface assignedToUser {
+  id: string;
+  name: string | null;
+  email: string | null;
+  hashedPassword: string | null;
+  emailVerified: Date | null;
+  image: string | null;
+}
+
 interface Props {
   searchParams: IssueQuery;
-  issues: Issue[];
+  issues: {
+    id: number;
+    title: string;
+    description: string;
+    status: Status;
+    createdAt: Date;
+    updatedAt: Date;
+    assignedToUserId: string | null;
+    assignedToUser: assignedToUser | null;
+  }[];
 }
 
 const IssueTable = ({ searchParams, issues }: Props) => {
@@ -58,7 +76,9 @@ const IssueTable = ({ searchParams, issues }: Props) => {
               {issue.createdAt.toDateString()}
             </Table.Cell>
             <Table.Cell className="hidden md:table-cell">
-              {issue.assignedToUserId || "Not Assigned"}
+              {issue.assignedToUser
+                ? issue.assignedToUser.name
+                : "Not Assigned"}
             </Table.Cell>
           </Table.Row>
         ))}

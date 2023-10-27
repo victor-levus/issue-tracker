@@ -6,6 +6,7 @@ import IssueStatusFilter from "./IssueStatusFilter";
 import { Status } from "@prisma/client";
 import Pagination from "@/app/components/Pagination";
 import IssueTable, { IssueQuery, columnNames } from "./IssueTable";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: IssueQuery;
@@ -29,6 +30,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
     orderBy,
     skip: (page - 1) * pageSize,
     take: pageSize,
+    include: {
+      assignedToUser: true,
+    },
   });
 
   const issueCount = await prisma.issue.count({
@@ -59,5 +63,10 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
 export const dynamic = "force-dynamic";
 // export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - Issues Page",
+  description: "View of Project issues",
+};
 
 export default IssuesPage;
