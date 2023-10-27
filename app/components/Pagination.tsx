@@ -35,6 +35,7 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
       <Text>
         Page {currentPage} of {numberOfPage}{" "}
       </Text>
+
       <Button
         color="gray"
         variant="soft"
@@ -43,6 +44,7 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
       >
         <AiOutlineDoubleLeft />
       </Button>
+
       <Button
         color="gray"
         variant="soft"
@@ -51,6 +53,7 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
       >
         <AiOutlineLeft />
       </Button>
+
       <Button
         color="gray"
         variant="soft"
@@ -59,6 +62,7 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
       >
         <AiOutlineRight />
       </Button>
+
       <Button
         color="gray"
         variant="soft"
