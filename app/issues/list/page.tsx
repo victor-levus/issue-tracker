@@ -2,14 +2,27 @@ import prisma from "@/prisma/client";
 import { Button, Flex, Table } from "@radix-ui/themes";
 import { IssueStatusBadge, Link } from "@/app/components";
 import React from "react";
+import NextLink from "next/link";
 import IssueStatusFilter from "./IssueStatusFilter";
-import { Status } from "@prisma/client";
+import { Issue, Status } from "@prisma/client";
+import { IoChevronUp } from "react-icons/io5";
 
 interface Props {
-  searchParams: { status: Status };
+  searchParams: { status: Status; orderBy: keyof Issue };
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
+  const columns: { label: string; value: keyof Issue; className?: string }[] = [
+    { label: "Issue", value: "title" },
+    { label: "Status", value: "status", className: "hidden md:table-cell" },
+    { label: "Created", value: "createdAt", className: "hidden md:table-cell" },
+    {
+      label: "Assign To",
+      value: "assignedToUserId",
+      className: "hidden md:table-cell",
+    },
+  ];
+
   const statuses = Object.values(Status);
   const filterStatus = statuses.includes(searchParams.status)
     ? searchParams.status
@@ -32,13 +45,18 @@ const IssuesPage = async ({ searchParams }: Props) => {
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell>Issues</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell">
-              Status
-            </Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell">
-              Date Created
-            </Table.ColumnHeaderCell>
+            {columns.map((column) => (
+              <Table.ColumnHeaderCell key={column.label}>
+                <NextLink
+                  href={{ query: { ...searchParams, orderBy: column.value } }}
+                >
+                  {column.label}{" "}
+                </NextLink>
+                {column.value === searchParams.orderBy && (
+                  <IoChevronUp className="inline" />
+                )}
+              </Table.ColumnHeaderCell>
+            ))}
           </Table.Row>
         </Table.Header>
 
@@ -58,6 +76,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 {issue.createdAt.toDateString()}
+              </Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
+                {issue.assignedToUserId || "Not Assigned"}
               </Table.Cell>
             </Table.Row>
           ))}
