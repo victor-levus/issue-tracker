@@ -40,12 +40,12 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
           </AlertDialog.Description>
           <Flex mt={"4"} justify={"between"}>
             <AlertDialog.Cancel>
-              <Button color="gray" variant="soft">
+              <Button className="bg-none" color="gray" variant="soft">
                 Cancel
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
-              <Button onClick={deleteIssue} color="red">
+              <Button className="bg-none" onClick={deleteIssue} color="red">
                 Delete Issue
               </Button>
             </AlertDialog.Action>
@@ -60,7 +60,12 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             This issue could not be deleted.
           </AlertDialog.Description>
           <Flex mt={"4"} justify={"between"}>
-            <Button onClick={() => setError(false)} color="gray" variant="soft">
+            <Button
+              className="bg-none"
+              onClick={() => setError(false)}
+              color="gray"
+              variant="soft"
+            >
               Ok
             </Button>
           </Flex>
