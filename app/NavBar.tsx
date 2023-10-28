@@ -26,7 +26,7 @@ const NavBar = () => {
             <Link href={"/"}>
               <AiFillBug
                 className="text-2xl text-zinc-600 "
-                style={{ fill: "var(--accent-11)" }}
+                style={{ fill: "var(--accent-11)", fontSize: "2rem" }}
               />
             </Link>
 
