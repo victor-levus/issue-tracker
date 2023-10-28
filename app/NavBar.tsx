@@ -24,7 +24,10 @@ const NavBar = () => {
         <Flex justify={"between"}>
           <Flex align={"center"} gap={"3"}>
             <Link href={"/"}>
-              <AiFillBug className="text-2xl text-zinc-600 " />
+              <AiFillBug
+                className="text-2xl text-zinc-600 "
+                style={{ fill: "var(--accent-11)" }}
+              />
             </Link>
 
             <NavLinks />

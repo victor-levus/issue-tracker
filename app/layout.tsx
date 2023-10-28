@@ -26,7 +26,8 @@ export default function RootLayout({
         <ReactQueryClientProvider>
           <AuthProvider>
             <Theme
-              accentColor="ruby"
+              appearance="light"
+              accentColor="violet"
               grayColor="olive"
               radius="small"
               scaling="110%"
@@ -35,7 +36,7 @@ export default function RootLayout({
               <main className="px-4 mb-5">
                 <Container>{children}</Container>
               </main>
-              {/* <ThemePanel /> */}
+              {/* <ThemePanel   /> */}
             </Theme>
           </AuthProvider>
         </ReactQueryClientProvider>
