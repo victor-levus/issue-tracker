@@ -18,6 +18,10 @@ body {
     color: white;
     background-color: var(--accent-9);
   }
+
+  .alert--btn:hover {
+    background-color: var(--accent-10);
+  }
 }
 
 @layer utilities {
